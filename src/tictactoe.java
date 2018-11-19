@@ -34,37 +34,36 @@ public class tictactoe {
 		nn = n*n;
 		//result = new ArrayList<Integer>(nn);
 		result = new char[nn];
-		for (int e = 1; e < nn ; e++){
-			result[e] = ('c');
+		for (int e = 0; e < nn ; e++){
+			result[e] = (' ');
 		}
-		System.out.println(result);
 		System.out.println("You have enter a "+ n 
 				+ "x" + n + " tic tac toe to play.");
 		int here = drawcanvas(n, result);
-		for (int i = 1; i <= nn ; i++){
+		for (int i = 0; i < nn ; i++){
 				System.out.println("Enter O or X at location " 
 						+ i);
 				input = scan.next().charAt(0);
 				result[i] = input;
 		}
 		here = drawcanvas(n, result);
-		
-
 	}
 	
 	public static int drawcanvas (int canvas, char[] result){
 		System.out.println(result);
+		System.out.println(canvas*2-1);
+		int i = 0;
 		for(int row = 0; row < canvas*2-1; row++){
 			for (int col = 0; col < canvas; col++){
 				//System.out.println(col + row);
 				// odd row, enter input
 				if (row%2 == 0){
-					if(col == canvas){
+					if(col == canvas-1){
 						//last before action
-						System.out.print(" "+ result[row] + " ");
-					} else if(col <= canvas-1){
+						System.out.print(" "+ result[i] + " ");
+					} else if(col < canvas-1){
 						//last action
-						System.out.print(" " + result[row] + " |" );
+						System.out.print(" " + result[i] + " |" );
 					}	else {
 						//other than that
 						System.out.print(" " + "X" + " |");
@@ -72,10 +71,10 @@ public class tictactoe {
 				}
 				// even row, just format
 				if (row%2 == 1){
-					if(col == canvas){
+					if(col == canvas-1){
 						//last before action
 						System.out.print("---");
-					} else if(col <= canvas-1){
+					} else if(col < canvas-1){
 						//last action
 						System.out.print("---|");
 					} else {
@@ -84,6 +83,7 @@ public class tictactoe {
 					}
 				}
 			}
+			i++;
 			System.out.println();
 		}
 		return 0;
